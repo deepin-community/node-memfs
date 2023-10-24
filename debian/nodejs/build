@@ -1,0 +1,7 @@
+if test -e node_modules/@types/jest; then
+	mv node_modules/@types/jest node_modules/@types/.jest
+fi
+tsc -p . && cp src/*.js lib
+if test -e node_modules/@types/.jest; then
+	mv node_modules/@types/.jest node_modules/@types/jest
+fi

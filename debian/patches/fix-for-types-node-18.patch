@@ -1,0 +1,16 @@
+Description: fix for @types/node >= 18
+Author: Yadd <yadd@debian.org>
+Bug-Debian: https://bugs.debian.org/1013990
+Forwarded: not-needed
+Last-Update: 2022-07-02
+
+--- a/src/process.ts
++++ b/src/process.ts
+@@ -25,6 +25,7 @@
+  */
+ const maybeReturnProcess = (): IProcess | undefined => {
+   if (typeof process !== 'undefined') {
++// @ts-ignore
+     return process;
+   }
+ 

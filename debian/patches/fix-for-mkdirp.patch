@@ -1,0 +1,27 @@
+Description: fix for mkdirp1 compatibility
+Author: Ajayi Olatunji <ajayiolatunji15@yahoo.com>
+Forwarded: not-needed
+Reviewed-By: Yadd <yadd@debian.org>
+Last-Update: 2022-11-22
+
+--- a/src/volume.ts
++++ b/src/volume.ts
+@@ -1961,7 +1961,17 @@
+   mkdir(path: PathLike, mode: TMode | IMkdirOptions, callback: TCallback<string>);
+   mkdir(path: PathLike, a: TCallback<void> | TMode | IMkdirOptions, b?: TCallback<string> | TCallback<void>) {
+     const opts: TMode | IMkdirOptions = getMkdirOptions(a);
+-    const callback = validateCallback(typeof a === 'function' ? a : b!);
++    let callback;
++    try{
++      callback = validateCallback(typeof a === 'function' ? a : b);
++    } catch (e){
++      return new Promise<void>((resolve, reject) => {
++        callback = function(err){
++          if (err) reject (err);
++          resolve();
++        }
++      })
++    }
+     const modeNum = modeToNumber(opts.mode, 0o777);
+     const filename = pathToFilename(path);
+     if (opts.recursive) this.wrapAsync(this.mkdirpBase, [filename, modeNum], callback);

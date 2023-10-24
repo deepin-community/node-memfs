@@ -1,0 +1,6 @@
+fix-for-newer-types-node.patch
+fix-for-mkdirp.patch
+tsc-workaround.patch
+fix-for-jest-28.patch
+fix-for-types-node-18.patch
+fix-for-jest-29.patch

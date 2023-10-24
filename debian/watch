@@ -1,0 +1,12 @@
+version=4
+opts=\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-memfs-$1/ \
+ https://github.com/streamich/memfs/tags .*/archive.*/v?([\d\.]+).tar.gz group
+
+opts=\
+component=fs-monkey,\
+ctype=nodejs,\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-fs-monkey-$1/ \
+ https://github.com/streamich/fs-monkey/tags .*/archive.*/v?([\d\.]+).tar.gz checksum
