@@ -1,0 +1,3 @@
+@types/jest test
+@types/node
+ts-jest test

@@ -1,0 +1,15 @@
+Description: support building with newer @types/node
+Author: Ajayi Olatunji <ajayiolatunji15@yahoo.com>
+Forwarded: https://github.com/streamich/memfs/issues/695
+
+--- a/src/volume.ts
++++ b/src/volume.ts
+@@ -451,7 +451,7 @@
+ export function dataToBuffer(data: TData, encoding: string = ENCODING_UTF8): Buffer {
+   if (Buffer.isBuffer(data)) return data;
+   else if (data instanceof Uint8Array) return bufferFrom(data);
+-  else return bufferFrom(String(data), encoding);
++  else return bufferFrom(data.toString());
+ }
+ 
+ export function bufferToEncoding(buffer: Buffer, encoding?: TEncodingExtended): TDataOut {

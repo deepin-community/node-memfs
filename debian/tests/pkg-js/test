@@ -1,0 +1,4 @@
+if [ ! -e node_modules/fs-monkey ]; then
+	ln -s `nodepath fs-monkey` node_modules/
+fi
+jest --ci src/__tests__/*

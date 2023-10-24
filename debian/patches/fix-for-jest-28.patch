@@ -1,0 +1,14 @@
+Description: fix test for jest 28
+Author: Yadd <yadd@debian.org>
+Bug-Debian: https://bugs.debian.org/1013544
+Forwarded: not-needed
+Last-Update: 2022-06-25
+
+--- a/src/__tests__/volume/callback-error.test.ts
++++ b/src/__tests__/volume/callback-error.test.ts
+@@ -1,4 +1,4 @@
+-jest.useFakeTimers('modern');
++jest.useFakeTimers();
+ 
+ // Fixes https://github.com/streamich/memfs/issues/542
+ it('should throw error instead of callback', () => {
